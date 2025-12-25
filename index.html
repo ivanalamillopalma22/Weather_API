@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoloWeather</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="holo-container">
+        <header class="holo-header">
+            <h1 class="app-title">HOLO<span class="highlight">WEATHER</span></h1>
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="ENTER LUZON CITY...">
+                <button id="search-btn">SCAN</button>
+                <button id="favorite-btn" title="Save/Remove Favorite">★</button>
+            </div>
+            <div id="favorites-list" class="favorites-list"></div>
+            <button id="theme-toggle" class="theme-btn">SWITCH MODE</button>
+        </header>
+
+        <!-- Error Container -->
+        <div id="error-container" class="error-message hidden"></div>
+
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="loading hidden">
+            <div class="spinner"></div>
+            <p>SCANNING ATMOSPHERE...</p>
+        </div>
+
+        <main class="weather-dashboard">
+            <div class="current-weather-panel">
+                <div class="location-info">
+                    <h2 id="city-name">--</h2>
+                    <p id="date">--</p>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="temp-display">
+                        <span id="temperature">--</span><span class="unit">°C</span>
+                    </div>
+                    <div class="weather-icon-container">
+                        <img id="weather-icon" src="" alt="Weather Icon" class="hidden">
+                        <p id="weather-desc">--</p>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="label">HUMIDITY</span>
+                        <span class="value" id="humidity">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">WIND</span>
+                        <span class="value" id="wind-speed">-- km/h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">AIR QUALITY</span>
+                        <span class="value" id="air-quality">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-panel">
+                <h3>5-DAY TRAJECTORY</h3>
+                <div class="forecast-controls" style="margin-bottom:10px;display:flex;gap:10px;align-items:center;">
+                    <label for="sort-forecast" style="font-size:0.95rem;">Sort:</label>
+                    <select id="sort-forecast">
+                        <option value="default">Default</option>
+                        <option value="temp-asc">Temp ↑</option>
+                        <option value="temp-desc">Temp ↓</option>
+                    </select>
+                    <label for="filter-forecast" style="font-size:0.95rem;">Filter:</label>
+                    <input id="filter-forecast" type="text" placeholder="e.g. rain, clear..." style="font-size:0.95rem;" />
+                </div>
+                <div class="forecast-container" id="forecast-container">
+                    <!-- Forecast items will be injected here -->
+                </div>
+                <button id="load-more-forecast" style="display:none;margin-top:10px;">Load more</button>
+            </div>
+        </main>
+
+        <footer class="holo-footer">
+            <p>Powered by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap API</a></p>
+            <p>&copy; 2025 HoloWeather Project</p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
